@@ -1,3 +1,10 @@
+/**
+ * Coche.java
+ *
+ * Clase que representa un coche con matrícula, modelo y velocidad.
+ *
+ * @version 1.0
+ */
 public class Coche {
     String matricula;
     String modelo;

@@ -1,5 +1,6 @@
 /**
  * Clase encargada de la interacción con el usuario
+ * y la presentación de datos
  */
 public class View {
     /**

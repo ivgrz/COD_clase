@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 /**
  * Clase encargada de manejar los datos
+ * y la lógica del programa
  */
 public class Model {
     static ArrayList<Coche> parking = new ArrayList<>();
