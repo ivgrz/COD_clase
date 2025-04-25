@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-class TEST {
+class ModelTest {
 
     @Test
     void cambiarVelocidadShouldThrowExceptionIfCocheDoesNotExist() {

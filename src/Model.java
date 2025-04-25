@@ -9,11 +9,12 @@ public class Model {
 
     /**
      * Crea un coche y lo mete en el parking
-     * @param modelo del coche
+     *
+     * @param modelo    del coche
      * @param matricula identificador unico
      * @return el coche creado
      */
-    public Coche crearCoche(String modelo, String matricula){
+    public Coche crearCoche(String modelo, String matricula) {
         Coche aux = new Coche(modelo, matricula);
         parking.add(aux);
         return aux;
@@ -21,13 +22,14 @@ public class Model {
 
     /**
      * Busca coche segun matricula
+     *
      * @param matricula a buscar
      * @return chche o null si no existe
      */
-    public Coche getCoche(String matricula){
+    public Coche getCoche(String matricula) {
         Coche aux = null;
         // recorre el array buscando por matricula
-        for (Coche e: parking) {
+        for (Coche e : parking) {
             if (e.matricula.equals(matricula)) {
                 aux = e;
             }
@@ -37,8 +39,9 @@ public class Model {
 
     /**
      * Cambia la velocidad de un coche
+     *
      * @param matricula
-     * @param v nueva velocidad
+     * @param v         nueva velocidad
      * @return velocidad modificada
      */
     public int cambiarVelocidad(String matricula, Integer v) {
@@ -50,10 +53,31 @@ public class Model {
 
     /**
      * Ddevuelve la velocidad segun la matricula
+     *
      * @param matricula
      * @return
      */
     public int getVelocidad(String matricula) {
         return getCoche(matricula).velocidad;
     }
+
+    public int aumentarVelocidad(String matricula, Integer v) {
+        Coche coche = getCoche(matricula);
+        if (coche != null) {
+            coche.velocidad += v;
+            return coche.velocidad;
+
+        }
+        return -1;
+    }
+        public int disminuirVelocidad ( String matricula, Integer v){
+            Coche coche = getCoche(matricula);
+            if (coche != null) {
+                coche.velocidad -= v;
+                return coche.velocidad;
+            }
+            return -1;
+        }
+
+
 }
