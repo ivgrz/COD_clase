@@ -33,16 +33,20 @@ public class Controller {
         } ;
      int comprobacion = 0;
 
-    comprobacion = miModel.aumentarVelocidad("SBC 1234", 20);
-    comprobacion = miModel.disminuirVelocidad("SBC 1234", 10);
+        comprobacion = miModel.aumentarVelocidad("SBC 1234", 20);
+        comprobacion = miModel.disminuirVelocidad("SBC 1234", 10);
 
-    if (comprobacion != -1) {
+        if (comprobacion != -1) {
         System.out.println(miModel.getVelocidad("SBC 1234"));
 
-    } else {
+        } else {
         System.out.println("Error");
+        }
     }
 
+    public static void inicio() {
     }
-
+    public static Coche crearCoche(String modelo, String matricula) {
+        return new Coche(modelo, matricula);
+    }
 }

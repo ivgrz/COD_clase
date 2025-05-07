@@ -21,14 +21,14 @@ public class Model {
     }
 
     /**
-     * Busca coche segun matricula
+     * Busca coche según matrícula
      *
      * @param matricula a buscar
      * @return chche o null si no existe
      */
     public Coche getCoche(String matricula) {
         Coche aux = null;
-        // recorre el array buscando por matricula
+        // recorre el array buscando por matrícula
         for (Coche e : parking) {
             if (e.matricula.equals(matricula)) {
                 aux = e;
