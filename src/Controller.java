@@ -27,6 +27,6 @@ public class Controller {
         int aumentarVelocidad = miModel.aumentarVelocidad("SBC 1234", 20);
         int disminuirVelocidad = miModel.disminuirVelocidad("SBC 1234", 10);
         int muestravelocidad = miModel.MostrarVelocidad("SBC 1234");
-
+        String mostarCoche = miModel.getCoche("SBC 1234").toString();
     }
 }

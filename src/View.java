@@ -16,20 +16,20 @@ public class View {
     }
 
     public static void menu() {
-        Scanner scanner = null;
-        int opcion = scanner.nextInt();
-        scanner = new Scanner(System.in);
 
-        scanner.nextLine();
+
 
         do {
+            System.out.println("Elige una opción: ");
             System.out.println("1. Crear coche");
             System.out.println("2. Aumentar velocidad");
             System.out.println("3. Disminuir velocidad");
             System.out.println("4. Mostrar velocidad");
             System.out.println("5. Salir");
+            Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Elige una opción: ");
+            int opcion = scanner.nextInt();
+
 
 
             switch (opcion) {
@@ -71,7 +71,7 @@ public class View {
 
             }
 
-        } while (opcion != 5);
+        } while (true);
 
     }
 }
