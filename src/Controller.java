@@ -1,12 +1,4 @@
-/**
- * Controller.java
- *
- * @author Ivan Gutierrez
- * @version 1.0
- */
-
 import java.lang.module.ModuleDescriptor;
-
 
 public class Controller {
     public static void main(String[] args) {
@@ -31,22 +23,5 @@ public class Controller {
         } else {
             System.out.println("Error");
         } ;
-     int comprobacion = 0;
-
-        comprobacion = miModel.aumentarVelocidad("SBC 1234", 20);
-        comprobacion = miModel.disminuirVelocidad("SBC 1234", 10);
-
-        if (comprobacion != -1) {
-        System.out.println(miModel.getVelocidad("SBC 1234"));
-
-        } else {
-        System.out.println("Error");
-        }
-    }
-
-    public static void inicio() {
-    }
-    public static Coche crearCoche(String modelo, String matricula) {
-        return new Coche(modelo, matricula);
     }
 }
