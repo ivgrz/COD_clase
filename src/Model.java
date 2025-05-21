@@ -34,6 +34,11 @@ public class Model {
         return aux;
     }
 
+    public ArrayList<Coche> getTodosLosCoches() {
+        return parking;
+    }
+
+
     /**
      * Cambia la velocidad de un coche
      * @param matricula
@@ -53,22 +58,49 @@ public class Model {
      * @return
      */
     public int getVelocidad(String matricula) {
-        return getCoche(matricula).velocidad;
+        Coche coche = getCoche(matricula);
+        return (coche != null) ? coche.velocidad : -1;
     }
-    public int aumentarVelocidad(String matricula, Integer v) {
-
-        getCoche(matricula).velocidad += v;
-
-        return getCoche(matricula).velocidad;
+    /**
+     * Añade un coche al parking
+     * @param coche el coche a añadir
+     */
+    public void addCoche(Coche coche) {
+        parking.add(coche);
     }
-    public int disminuirVelocidad(String matricula, Integer v) {
 
-        getCoche(matricula).velocidad -= v;
-
-        return getCoche(matricula).velocidad;
+    /**
+     * Aumenta la velocidad de un coche en el parking
+     * @param index índice del coche
+     * @param incremento cantidad a aumentar
+     */
+    public void aumentarVelocidadCoche(int index, int incremento) {
+        if (index >= 0 && index < parking.size()) {
+            parking.get(index).aumentarVelocidad(incremento);
+        } else {
+            System.out.println("Índice fuera de rango");
+        }
     }
-   public int MostrarVelocidad(String matricula) {
-       return getCoche(matricula).velocidad;
-   }
-
+    /**
+     * Disminuye la velocidad de un coche en el parking
+     * @param index índice del coche
+     * @param decremento cantidad a disminuir
+     */
+    public void disminuirVelocidadCoche(int index, int decremento) {
+        if (index >= 0 && index < parking.size()) {
+            parking.get(index).disminuirVelocidad(decremento);
+        } else {
+            System.out.println("Índice fuera de rango");
+        }
+    }
+    public void mostrarTodosLosCoches(ArrayList<Coche> coches) {
+        System.out.println("--- Lista de Coches ---");
+        if (coches.isEmpty()) {
+            System.out.println("No hay coches registrados.");
+        } else {
+            for (Coche coche : coches) {
+                System.out.println(coche);
+            }
+        }
+    }
 }

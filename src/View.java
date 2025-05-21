@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Clase encargada de la interacción con el usuario
  */
 public class View {
+
     /**
      * Muestra la velocidad de un coche
      * @param matricula del coche
@@ -15,55 +17,86 @@ public class View {
         return true;
     }
 
+    public void mostrarTodosLosCoches(ArrayList<Coche> coches) {
+        System.out.println("--- Lista de Coches ---");
+        if (coches.isEmpty()) {
+            System.out.println("No hay coches registrados.");
+        } else {
+            for (Coche coche : coches) {
+                System.out.println(coche);
+            }
+        }
+    }
+
+
+
     public static void menu() {
+            Scanner scanner = new Scanner(System.in);
+
+        Model miModel = new Model();
+        View miView = new View();
+        Controller miController = new Controller();
+        int opcion;
 
 
 
         do {
-            System.out.println("Elige una opción: ");
+            System.out.println("\n--- Menú Principal ---");
             System.out.println("1. Crear coche");
             System.out.println("2. Aumentar velocidad");
             System.out.println("3. Disminuir velocidad");
-            System.out.println("4. Mostrar velocidad");
-            System.out.println("5. Salir");
-            Scanner scanner = new Scanner(System.in);
+            System.out.println("4. Mostrar velocidad de un coche");
+            System.out.println("5. Mostrar todos los coches");
+            System.out.println("0. Salir");
+            System.out.print("Elige una opción: ");
 
-            int opcion = scanner.nextInt();
-
+            opcion = scanner.nextInt();
 
 
             switch (opcion) {
+
                 case 1:
-                    System.out.println("Introduce el modelo del coche: ");
+                    System.out.print("Introduce el modelo del coche: ");
                     String modelo = scanner.nextLine();
-                    System.out.println("Introduce la matrícula del coche: ");
+                    System.out.print("Introduce la matrícula del coche: ");
                     String matricula = scanner.nextLine();
-                    Model miModel = new Model();
                     miModel.crearCoche(modelo, matricula);
+                    System.out.println("Coche creado correctamente.");
                     break;
                 case 2:
-                    System.out.println("Introduce la matrícula del coche: ");
-                    String matricula2 = scanner.nextLine();
-                    System.out.println("Introduce la velocidad a aumentar: ");
+                    System.out.print("Introduce la matrícula del coche: ");
+                    String matriculaAumentar = scanner.nextLine();
+                    System.out.print("Introduce la velocidad a aumentar: ");
                     int velocidadAumentar = scanner.nextInt();
-                    Model miModel2 = new Model();
-                    miModel2.aumentarVelocidad(matricula2, velocidadAumentar);
+                    scanner.nextLine(); // Consumir el salto de línea
+                    miController.aumentarVelocidad(matriculaAumentar, miModel.getVelocidad(matriculaAumentar) + velocidadAumentar);
+                    System.out.println("Velocidad aumentada correctamente.");
                     break;
                 case 3:
-                    System.out.println("Introduce la matrícula del coche: ");
-                    String matricula3 = scanner.nextLine();
-                    System.out.println("Introduce la velocidad a disminuir: ");
+                    System.out.print("Introduce la matrícula del coche: ");
+                    String matriculaDisminuir = scanner.nextLine();
+                    System.out.print("Introduce la velocidad a disminuir: ");
                     int velocidadDisminuir = scanner.nextInt();
-                    Model miModel3 = new Model();
-                    miModel3.disminuirVelocidad(matricula3, velocidadDisminuir);
+                    scanner.nextLine(); // Consumir el salto de línea
+                    miController.disminuirVelocidad(matriculaDisminuir, miModel.getVelocidad(matriculaDisminuir) - velocidadDisminuir);
+                    System.out.println("Velocidad disminuida correctamente.");
                     break;
                 case 4:
-                    System.out.println("Introduce la matrícula del coche: ");
-                    String matricula4 = scanner.nextLine();
-                    Model miModel4 = new Model();
-                    miModel4.MostrarVelocidad(matricula4);
+                    System.out.print("Introduce la matrícula del coche: ");
+                    String matriculaMostrar = scanner.nextLine();
+                    int velocidad = miModel.getVelocidad(matriculaMostrar);
+                    if (velocidad != -1) {
+                        miView.muestraVelocidad(matriculaMostrar, velocidad);
+                    } else {
+                        System.out.println("Coche no encontrado.");
+                    }
                     break;
-
+                case 5:
+                    miView.mostrarTodosLosCoches(miModel.getTodosLosCoches());
+                    break;
+                case 0:
+                    System.out.println("Saliendo del programa...");
+                    break;
                 default:
                     System.out.println("Opción no válida");
                     break;
@@ -71,7 +104,7 @@ public class View {
 
             }
 
-        } while (true);
+        } while (opcion != 0);
 
     }
 }

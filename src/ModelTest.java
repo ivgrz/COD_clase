@@ -24,5 +24,20 @@ class ModelTest {
     @Test
     void cambiarVelocidadShouldUpdateCocheVelocidad() {
     }
+    @Test
+    void getTodosLosCochesShouldReturnAllCoches() {
+    }
+    @Test
+    void addCocheShouldAddCocheToParking() {
+    }
+    @Test
+    void eliminarCocheShouldRemoveCocheFromParking() {
+    }
+    @Test
+    void mostrarDetallesCocheShouldShowDetailsOfCoche() {
+    }
+    @Test
+    void resetearVelocidadShouldResetCocheVelocidad() {
+    }
 }
 

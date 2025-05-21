@@ -1,7 +1,15 @@
 public class App {
     public static void main(String[] args) {
-        //Punto de entrada de la aplicación
-    View.menu();
+        // Crear instancias del Model y Controller
+        Model miModel = new Model();
+        Controller miController = new Controller();
+
+        // Crear la View y pasarle el Controller
+        View miView = new View();
+
+        // Iniciar el menú
+        miView.menu();
+
 
     }
 }
